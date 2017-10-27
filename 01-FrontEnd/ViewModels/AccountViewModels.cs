@@ -48,17 +48,17 @@ namespace FrontEnd.ViewModels
 
     public class LoginViewModel
     {
-        [Required]
-        [Display(Name = "Email")]
-        [EmailAddress]
-        public string Email { get; set; }
+      
+        [Required(ErrorMessage ="El campo {0} es requerido.")]
+        [Display(Name = "Nombre de Usuario")]
+        public string UserName { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "El campo {0} es requerido.")]
         [DataType(DataType.Password)]
-        [Display(Name = "Password")]
+        [Display(Name = "Contraseña")]
         public string Password { get; set; }
 
-        [Display(Name = "Recordarme?")]
+        [Display(Name = "Recuerdarme?")]
         public bool RememberMe { get; set; }
     }
 

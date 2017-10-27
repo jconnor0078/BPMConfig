@@ -220,6 +220,7 @@
     <Content Include="Assets\admin\layout4\img\loading-spinner-default.gif" />
     <Content Include="Assets\admin\layout4\img\loading-spinner-grey.gif" />
     <Content Include="Assets\admin\layout4\img\loading.gif" />
+    <Content Include="Assets\admin\layout4\img\logo-bancocaribe.png" />
     <Content Include="Assets\admin\layout4\img\logo-big-white.png" />
     <Content Include="Assets\admin\layout4\img\logo-big.png" />
     <Content Include="Assets\admin\layout4\img\logo-default.png" />
