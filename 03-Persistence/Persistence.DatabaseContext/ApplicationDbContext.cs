@@ -18,6 +18,13 @@ namespace Persistence.DatabaseContext
         public DbSet<ApplicationRole> ApplicationRole { get; set; }
         public DbSet<ApplicationUserRole> ApplicationUserRole { get; set; }
 
+
+        public DbSet<BPM_DealerContact> BPM_DealerContacts { get; set; }
+        public DbSet<BPM_DealerContactType> BPM_DealerContactTypes { get; set; }
+        public DbSet<BPMConfig_AssocDealerDealerAssociation> BPMConfig_AssocDealerDealerAssociations { get; set; }
+        public DbSet<BPMConfig_Dealer> BPMConfig_Dealers { get; set; }
+        public DbSet<BPMConfig_DealerAssociation> BPMConfig_DealerAssociations { get; set; }
+
         public ApplicationDbContext()
             : base(string.Format("name={0}", Parameters.AppContext))
         {

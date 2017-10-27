@@ -43,6 +43,13 @@ namespace Common
             Disable
         }
 
+        public enum ContactType
+        {
+            Phone,
+            CellPhone,
+            Email
+        }
+
         public enum MyFilters
         {
             IsDeleted

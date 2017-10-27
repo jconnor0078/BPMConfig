@@ -63,11 +63,13 @@
     <Compile Include="Auth\ApplicationUserRole.cs" />
     <Compile Include="Custom\UserForGridView.cs" />
     <Compile Include="Custom\CategoryForGridView.cs" />
-    <Compile Include="Domain\Course.cs" />
-    <Compile Include="Domain\Student.cs" />
+    <Compile Include="Domain\BPMConfig_AssocDealerDealerAssociation.cs" />
+    <Compile Include="Domain\BPMConfig_Dealer.cs" />
+    <Compile Include="Domain\BPMConfig_DealerAssociation.cs" />
+    <Compile Include="Domain\BPM_DealerContact.cs" />
+    <Compile Include="Domain\BPM_DealerContactType.cs" />
     <Compile Include="Helper\AuditEntity.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Domain\StudentPerCourse.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
