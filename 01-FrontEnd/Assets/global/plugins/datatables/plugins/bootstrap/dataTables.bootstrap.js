@@ -267,6 +267,7 @@ $.extend($.fn.dataTableExt.oPagination, {
 
 /* Bootstrap style full number pagination control */
 $.extend($.fn.dataTableExt.oPagination, {
+    
     "bootstrap_extended": {
         "fnInit": function (oSettings, nPaging, fnDraw) {
             var oLang = oSettings.oLanguage.oPaginate;

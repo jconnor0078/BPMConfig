@@ -3,13 +3,17 @@ using FrontEnd.ViewModels;
 using Service;
 using System.Collections.Generic;
 using System.Web.Mvc;
+using Microsoft.AspNet.Identity;
 
 namespace FrontEnd.Controllers
 {
+    [Authorize]
     public class HomeController : Controller
     {
         public ActionResult Index()
         {
+            var userId = this.User.Identity.GetUserId();
+            var userName = this.User.Identity.GetUserName();
             var infoHeader = new MiniHeaderViewModel
             {
                 PrincipalTitle = "Tabla de Trabajo",

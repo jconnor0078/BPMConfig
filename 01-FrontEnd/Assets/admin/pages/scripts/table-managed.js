@@ -13,7 +13,7 @@ var TableManaged = function () {
                     "sortAscending": ": activate to sort column ascending",
                     "sortDescending": ": activate to sort column descending"
                 },
-                "emptyTable": "No data available in table",
+                "emptyTable": "No hay datos disponibles",
                 "info": "Showing _START_ to _END_ of _TOTAL_ entries",
                 "infoEmpty": "No entries found",
                 "infoFiltered": "(filtered1 from _MAX_ total entries)",
@@ -55,7 +55,7 @@ var TableManaged = function () {
             "pageLength": 5,            
             "pagingType": "bootstrap_full_number",
             "language": {
-                "search": "My search: ",
+                "search": "Mi Busqueda: ",
                 "lengthMenu": "  _MENU_ records",
                 "paginate": {
                     "previous":"Prev",
@@ -112,13 +112,13 @@ var TableManaged = function () {
                     "sortAscending": ": activate to sort column ascending",
                     "sortDescending": ": activate to sort column descending"
                 },
-                "emptyTable": "No data available in table",
+                "emptyTable": "No hay datos disponible",
                 "info": "Showing _START_ to _END_ of _TOTAL_ entries",
                 "infoEmpty": "No entries found",
                 "infoFiltered": "(filtered1 from _MAX_ total entries)",
                 "lengthMenu": "Show _MENU_ entries",
                 "search": "Search:",
-                "zeroRecords": "No matching records found"
+                "zeroRecords": "No se pudo encontrar ningun dato con esa descipción"
             },
 
             // Uncomment below line("dom" parameter) to fix the dropdown overflow issue in the datatable cells. The default datatable layout
