@@ -1,4 +1,6 @@
-﻿ <!-- BEGIN SAMPLE PORTLET CONFIGURATION MODAL FORM-->
+﻿@model MiniHeaderViewModel
+
+ <!-- BEGIN SAMPLE PORTLET CONFIGURATION MODAL FORM-->
 <div class="modal fade" id="portlet-config" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
@@ -25,7 +27,17 @@
 <div class="page-head">
     <!-- BEGIN PAGE TITLE -->
     <div class="page-title">
-        <h1>Inbox <small>user inbox</small></h1>
+        @if (Model != null)
+        {
+            <h1>
+                @Model.PrincipalTitle  <small>@Model.SubTitle</small>
+            </h1>
+        }
+        else
+        {
+            <h1>N/a<small>N/a</small>
+            </h1>
+        }
     </div>
     <!-- END PAGE TITLE -->
     <!-- BEGIN PAGE TOOLBAR -->
@@ -121,17 +133,16 @@
 <!-- END PAGE HEAD -->
 <!-- BEGIN PAGE BREADCRUMB -->
 <ul class="page-breadcrumb breadcrumb">
-    <li>
-        <a href="index.html">Home</a>
-        <i class="fa fa-circle"></i>
-    </li>
-    <li>
-        <a href="#">Pages</a>
-        <i class="fa fa-circle"></i>
-    </li>
-    <li>
-        <a href="#">Inbox</a>
-    </li>
+    @if (Model != null && Model.MiniHeaderRoute != null && Model.MiniHeaderRoute.Count > 0)
+    {
+        foreach (var item in Model.MiniHeaderRoute)
+        {
+            <li>
+                <a href="@Url.Action(item.Action, item.Controller)">@item.RouteTitle</a>
+                <i class="fa fa-circle"></i>
+            </li>
+        }
+    } 
 </ul>
 <!-- END PAGE BREADCRUMB -->
 <!-- END PAGE HEADER-->

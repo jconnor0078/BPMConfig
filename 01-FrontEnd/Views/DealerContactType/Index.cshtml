@@ -1,0 +1,61 @@
+﻿@model BasicInfoContactTypeViewModel
+
+<!--Begin MiniHeaderForAllPages-->
+@Html.Partial("_MiniHeaderForAllPages", Model.miniHeader)
+<div class="portlet light">
+    <div class="portlet-body">
+
+        <!--Begin blue contect-->
+        <div class="portlet box green">
+            <div class="portlet-title">
+                <div class="caption">
+                    <i class="icon-folder"></i>Tipo de Contactos
+                </div>
+            </div>
+        </div>
+        <!--End blue contect-->
+        <!--Begin Page-->
+        <div id="PersonTableContainer"></div>
+
+
+        <!--End Page-->
+
+    </div>
+</div>
+<script src="~/Scripts/jquery-1.9.1.min.js" type="text/javascript"></script>
+<script src="~/Scripts/jquery-ui-1.9.2.js" type="text/javascript"></script>
+<script src="~/Scripts/syntaxhighligher/shCore.js" type="text/javascript"></script>
+<script src="~/Scripts/jtable/jquery.jtable.js" type="text/javascript"></script>
+<script type="text/javascript">
+        $(document).ready(function () {
+            $('#PersonTableContainer').jtable({
+                title: 'Table of people',
+                actions: {
+                    listAction: '/DealerContactType/PersonList',
+                
+                },
+                fields: {
+                    PersonId: {
+                        key: true,
+                        list: false
+                    },
+                    Name: {
+                        title: 'Author Name',
+                        width: '40%'
+                    },
+                    Age: {
+                        title: 'Age',
+                        width: '20%'
+                    },
+                    RecordDate: {
+                        title: 'Record date',
+                        width: '30%',
+                        type: 'date',
+                        create: false,
+                        edit: false
+                    }
+                }
+            });
+            $('#PersonTableContainer').jtable('load');
+        });     
+</script>

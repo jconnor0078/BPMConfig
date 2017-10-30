@@ -1,14 +1,9 @@
-﻿
-<!-- BEGIN CONTENT -->
-<div class="page-content-wrapper">
-    <div class="page-content">
-       <!--Begin MiniHeaderForAllPages-->
-        @Html.Partial("_MiniHeaderForAllPages","Home")
-        <div class="portlet light">
-            <div class="portlet-body">
-                
-            </div>
-        </div>
+﻿@model HomeViewModel
+
+ <!--Begin MiniHeaderForAllPages-->
+@Html.Partial("_MiniHeaderForAllPages", Model.miniHeader)
+<div class="portlet light">
+    <div class="portlet-body">
+
     </div>
 </div>
-<!-- END CONTENT -->

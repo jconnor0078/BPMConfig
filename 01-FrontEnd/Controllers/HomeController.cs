@@ -1,5 +1,7 @@
 ﻿using Common;
+using FrontEnd.ViewModels;
 using Service;
+using System.Collections.Generic;
 using System.Web.Mvc;
 
 namespace FrontEnd.Controllers
@@ -8,7 +10,15 @@ namespace FrontEnd.Controllers
     {
         public ActionResult Index()
         {
-            return View();
+            var infoHeader = new MiniHeaderViewModel
+            {
+                PrincipalTitle = "Tabla de Trabajo",
+                SubTitle = "",
+       
+            };
+
+            var viewModel = new HomeViewModel { miniHeader = infoHeader };
+            return View(viewModel);
         }
 
         public ActionResult About()
