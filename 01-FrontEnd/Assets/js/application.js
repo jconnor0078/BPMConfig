@@ -1,16 +1,13 @@
 ﻿/* By Default */
 $(document).ready(function () {
-    // Vue Initialize
-    window.$Vm = new Vue({
-        el: '#app',
-        components: Components
-    })
+ 
 
     // Bootstrap ToolTips
     $('[data-toggle="tooltip"]').tooltip();
 
     // Ajax Form
     $("body").on('click', 'button', function () {
+        debugger;
         // Si el boton no tiene el atributo ajax no hacemos nada
         if ($(this).data('ajax') === undefined)
             return;
@@ -211,4 +208,12 @@ App.helpers.html = {
     addTableClass(id) {
         $(id).find('table').addClass('table table-striped');
     }
+}
+
+
+App.bootstrap_alert = function () { }
+
+App.bootstrap_alert.warning = function (id, message) {
+    debugger;
+    $('#' + id.trim()).html('<div class="alert alert-warning"><a class="close" data-dismiss="alert">x</a>' + message + '</div>');
 }

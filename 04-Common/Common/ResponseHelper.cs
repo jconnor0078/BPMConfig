@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 
 namespace Common
 {
@@ -48,6 +49,7 @@ namespace Common
             PrepareResponse(r, m);
             return this;
         }
+ 
     }
 
     public class ResponseHelper<T> : ResponseHelperBase where T : class

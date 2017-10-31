@@ -9,6 +9,8 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using Microsoft.AspNet.Identity;
+using System.Threading.Tasks;
+using Model.Auth;
 
 namespace FrontEnd.Controllers
 {
@@ -34,57 +36,56 @@ namespace FrontEnd.Controllers
             return View(viewModel);
         }
 
+        public ActionResult Edit(int id)
+        {
+            var user = this.User;
+
+            var data = _dealerContactTypeService.GetObjById(id);
+
+            var viewModel = new BasicInfoContactTypeViewModel { Description= data.Description, id = id };
+
+            return PartialView("_Edit",viewModel);
+        }
+        
+        [HttpPost]
+        public JsonResult Update(BasicInfoContactTypeViewModel model)
+        {
+            var rh = new ResponseHelper();
+            if (ModelState.IsValid)
+            {
+                var userId = this.User.Identity.GetUserId();
+                var userName = this.User.Identity.GetUserName();
+ 
+                rh = _dealerContactTypeService.Update(new BPM_DealerContactType()
+                {
+                    Id= model.id,
+                    Description= model.Description,
+                    LastModifierUserId= userId
+                });
+                if (rh.Response)
+                {
+                    rh.Href = "self";
+                }
+            }else
+            {
+                 
+                rh.SetValidations(ModelState.GetErrors());
+                
+            }
+
+            // If we got this far, something failed, redisplay form
+            return Json(rh);
+        }
+
+         
+     
+
         public JsonResult DealerContactType(int id = 0)
         {
             return Json(null);
         }
 
-        [HttpPost]
-        public JsonResult PersonList()
-        {
-            try
-            {
-                List<Person> persons = new List<Person>();
-                persons.Add(new Person
-                {
-                    PersonId = 1,
-                    Name = "Jefferson Connor",
-                    Age = 25,
-                    RecordDate = DateTime.Now
-                });
-
-                persons.Add(new Person
-                {
-                    PersonId = 2,
-                    Name = "Miguel Connor",
-                    Age = 44,
-                    RecordDate = DateTime.Now
-                });
-
-                persons.Add(new Person
-                {
-                    PersonId = 3,
-                    Name = "Pedro Connor",
-                    Age = 33,
-                    RecordDate = DateTime.Now
-                });
-
-                persons.Add(new Person
-                {
-                    PersonId = 22,
-                    Name = "Jose Connor",
-                    Age = 25,
-                    RecordDate = DateTime.Now
-                });
-
-                return Json(new { Result = "OK", Records = persons });
-            }
-            catch (Exception ex)
-            {
-                return Json(new { Result = "ERROR", Message = ex.Message });
-            }
-        }
-         
+  
         [HttpPost]
         public JsonResult ContactTypeList(int jtStartIndex, int jtPageSize, string jtSorting)
         {
@@ -93,14 +94,9 @@ namespace FrontEnd.Controllers
                 //get data from database
                 int Count = _dealerContactTypeService.GetDealerContactTypeCount();
                 List<BPM_DealerContactType> contactTypes = new List<BPM_DealerContactType>();
-                //= _dealerContactTypeService.GetContactType(jtStartIndex, jtPageSize, jtSorting);
+                contactTypes = _dealerContactTypeService.GetContactType(jtStartIndex, jtPageSize, jtSorting);
 
-                contactTypes.Add(new BPM_DealerContactType {Id=1, Description="Desc 1", EnumName="Phone",   CreationTime= DateTime.Now });
-                contactTypes.Add(new BPM_DealerContactType { Id = 1, Description = "Desc 1", EnumName = "Phone", CreationTime = DateTime.Now });
-                contactTypes.Add(new BPM_DealerContactType { Id = 1, Description = "Desc 1", EnumName = "Phone", CreationTime = DateTime.Now });
-                contactTypes.Add(new BPM_DealerContactType { Id = 1, Description = "Desc 1", EnumName = "Phone", CreationTime = DateTime.Now });
-                contactTypes.Add(new BPM_DealerContactType { Id = 1, Description = "Desc 1", EnumName = "Phone", CreationTime = DateTime.Now });
-                
+                         
 
                 return Json(new {Result="OK", data=contactTypes, TotalRecordCount= 20 });
             }
