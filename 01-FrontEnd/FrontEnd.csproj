@@ -182,6 +182,7 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\DealerContactTypeController.cs" />
+    <Compile Include="Controllers\DealerController.cs" />
     <Compile Include="Controllers\TestController.cs" />
     <Compile Include="Controllers\LearnController.cs" />
     <Compile Include="Controllers\InstructorController.cs" />
@@ -195,6 +196,8 @@
     </Compile>
     <Compile Include="ViewModels\AccountViewModels.cs" />
     <Compile Include="ViewModels\BasicInfoContactTypeViewModel.cs" />
+    <Compile Include="ViewModels\DealerBasicInfoViewModel.cs" />
+    <Compile Include="ViewModels\DealerCreateViewModel.cs" />
     <Compile Include="ViewModels\HomeViewModel.cs" />
     <Compile Include="ViewModels\ManageViewModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -4561,6 +4564,10 @@
     <Content Include="Scripts\jtable\themes\jqueryui\jtable_jqueryui.less" />
     <Content Include="Scripts\jtable\themes\basic\jtable_basic.less" />
     <Content Include="Views\DealerContactType\_Edit.cshtml" />
+    <Content Include="Views\Dealer\Index.cshtml" />
+    <Content Include="Views\Dealer\GeneralEdit.cshtml" />
+    <Content Include="Views\Dealer\_Edit.cshtml" />
+    <Content Include="Views\Dealer\Create.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\Logs\" />

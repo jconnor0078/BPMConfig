@@ -19,8 +19,11 @@ namespace Service.Config
             container.Register<IRepository<ApplicationRole>>((x) => new Repository<ApplicationRole>(ambientDbContextLocator));
             container.Register<IRepository<ApplicationUserRole>>((x) => new Repository<ApplicationUserRole>(ambientDbContextLocator));
             container.Register<IRepository<BPM_DealerContactType>>((x) => new Repository<BPM_DealerContactType>(ambientDbContextLocator));
+            container.Register<IRepository<BPMConfig_Dealer>>((x) => new Repository<BPMConfig_Dealer>(ambientDbContextLocator));
+
 
             container.Register<IDealerContactTypeService, DealerContactTypeService>();
+            container.Register<IDealerService, DealerService>();
         }
     }
 }

@@ -11,9 +11,13 @@ namespace Model.Domain
 {
     public class BPM_DealerContact
     {
+        [Required]
         public int Id { get; set; }
         [Required]
         public string ContactName { get; set; }
+
+        [Required]
+        public string ContactDesc { get; set; }
 
         public BPMConfig_Dealer BPMConfig_Dealer { get; set; }
         public int BPMConfig_DealerId { get; set; }

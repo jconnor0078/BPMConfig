@@ -1,0 +1,505 @@
+﻿@model DealerCreateViewModel
+<!--Begin MiniHeaderForAllPages-->
+@Html.Partial("_MiniHeaderForAllPages", Model.miniHeader)
+
+
+<div class="clearfix">
+</div>
+
+
+<!-- BEGIN PAGE CONTENT-->
+<div class="row">
+    <div class="col-md-12">
+        <div class="portlet box blue" id="form_wizard_1">
+            <div class="portlet-title">
+                <div class="caption">
+                    <i class="fa fa-gift"></i> Creación de Nuevo Dealer - <span class="step-title">
+                        Paso 1 of 4
+                    </span>
+                </div>
+                <div class="tools hidden-xs">
+                    <a href="javascript:;" class="collapse">
+                    </a>
+                    <a href="#portlet-config" data-toggle="modal" class="config">
+                    </a>
+                    <a href="javascript:;" class="reload">
+                    </a>
+                    <a href="javascript:;" class="remove">
+                    </a>
+                </div>
+            </div>
+            <div class="portlet-body form">
+                @using (Html.BeginForm("Update", "Dealer", FormMethod.Post, new { id = "submit_form", @class = "form-horizontal" }))
+                {
+
+                    <div class="form-wizard">
+                        <div class="form-body">
+                            <ul class="nav nav-pills nav-justified steps">
+                                <li>
+                                    <a href="#tab1" data-toggle="tab" class="step">
+                                        <span class="number">
+                                            1
+                                        </span>
+                                        <span class="desc">
+                                            <i class="fa fa-check"></i> Datos Generales del Dealer
+                                        </span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#tab2" data-toggle="tab" class="step">
+                                        <span class="number">
+                                            2
+                                        </span>
+                                        <span class="desc">
+                                            <i class="fa fa-check"></i> Profile Setup
+                                        </span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#tab3" data-toggle="tab" class="step active">
+                                        <span class="number">
+                                            3
+                                        </span>
+                                        <span class="desc">
+                                            <i class="fa fa-check"></i> Billing Setup
+                                        </span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#tab4" data-toggle="tab" class="step">
+                                        <span class="number">
+                                            4
+                                        </span>
+                                        <span class="desc">
+                                            <i class="fa fa-check"></i> Confirm
+                                        </span>
+                                    </a>
+                                </li>
+                            </ul>
+                            <div id="bar" class="progress progress-striped" role="progressbar">
+                                <div class="progress-bar progress-bar-success">
+                                </div>
+                            </div>
+                            <div class="tab-content">
+                                <div class="alert alert-danger display-none">
+                                    <button class="close" data-dismiss="alert"></button>
+                                    Tienes algunos errores. Favor Revisar.
+                                </div>
+                                <div class="alert alert-success display-none">
+                                    <button class="close" data-dismiss="alert"></button>
+                                    La validación del formulario fur correcta!
+                                </div>
+
+                                <div class="tab-pane active" id="tab1">
+
+                                    <h3 class="block">Informaciones Generales del Dealer</h3>
+                                    <div class="form-group">
+                                        <label class="control-label col-md-3">
+                                            Codigo del Dealer <span class="required">
+                                                *
+                                            </span>
+                                        </label>
+                                        <div class="col-md-4">
+                                            <input type="text" class="form-control" name="DealerCode" />
+                                            <span class="help-block">
+                                                colocar el codigo del dealer
+                                            </span>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="control-label col-md-3">
+                                            Nombre de Dealer <span class="required">
+                                                *
+                                            </span>
+                                        </label>
+                                        <div class="col-md-4">
+                                            <input type="text" class="form-control" name="DealerName" />
+                                            <span class="help-block">
+                                                colocar el nombre del dealer
+                                            </span>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label class="control-label col-md-3">Provincia</label>
+                                        <div class="col-md-4">
+                                            <select name="ProvinceId" id="ProvinceId_list" class="form-control">
+                                                <option value=""></option>
+                                                <option value="1">Santo Domingo</option>
+                                                <option value="2">Santiago</option>
+                                                <option value="3">La Romana</option>
+                                                <option value="4">San Pedro</option>
+                                                <option value="5">San Francisco</option>
+                                                <option value="6">La vega</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="control-label col-md-3">
+                                            Presidente del Dealer <span class="required">
+                                                *
+                                            </span>
+                                        </label>
+                                        <div class="col-md-4">
+                                            <input type="text" class="form-control" name="DealerPresident" />
+                                            <span class="help-block">
+                                                colocar el nombre del presidente del dealer
+                                            </span>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="control-label col-md-3">Dirección</label>
+                                        <div class="col-md-4">
+                                            <textarea class="form-control" rows="3" name="Address"></textarea>
+                                            <span class="help-block">
+                                                coloque la dirección del dealer
+                                            </span>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="control-label col-md-3">
+                                            Estado <span class="required">
+                                                *
+                                            </span>
+                                        </label>
+                                        <div class="col-md-4">
+                                            <div class="radio-list">
+                                                <label>
+                                                    <input type="radio" name="Status" value="true" data-title="Activo" />
+                                                    Activo
+                                                </label>
+                                                <label>
+                                                    <input type="radio" name="Status" value="false" data-title="Inactivo" />
+                                                    Inactivo
+                                                </label>
+                                            </div>
+                                            <div id="form_Status_error">
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+
+                                <div class="tab-pane" id="tab2">
+                                    <h3 class="block">Contactos del Dealer</h3>
+                                    <span id="errorAddContact" style="color:red"></span>
+                                    <div class="form-group">
+                                        <label class="control-label col-md-3">
+                                            Nombre
+                                        </label>
+                                        <div class="col-md-4">
+                                            <input type="text" class="form-control" id="txtContactName" />
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="control-label col-md-3">Tipo de contacto</label>
+                                        <div class="col-md-4">
+                                            <select id="ddContactType" class="form-control">
+                                                <option value=""></option>
+                                                <option value="1">Santo Domingo</option>
+                                                <option value="2">Santiago</option>
+                                                <option value="3">La Romana</option>
+                                                <option value="4">San Pedro</option>
+                                                <option value="5">San Francisco</option>
+                                                <option value="6">La vega</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="control-label col-md-3">
+                                            Descripción
+                                        </label>
+                                        <div class="col-md-4">
+                                            <input type="text" class="form-control" id="txtContactDesc" />
+                                        </div>
+                                    </div>
+                                  
+                                    <div class="form-group">
+                                        <label class="control-label col-md-3"></label>
+                                        <div class="col-md-4">
+                                            <button type="button" onclick="AddContacts()" class="btn blue">Agregar</button>
+                                        </div>
+                                    </div>
+
+                                    <div class="portlet">
+                                        <div class="portlet-title">
+                                            <div class="caption">
+                                                <i class="icon-user"></i>Contactos Agregados
+                                            </div>
+                                            <div class="tools">
+                                                <a href="javascript:;" class="collapse">
+                                                </a>
+                                            </div>
+                                        </div>
+                                        <div class="portlet-body">
+                                            <div class="table-scrollable">
+                                                <table id="tableContact" class="table table-striped table-bordered table-advance table-hover">
+                                                    <thead>
+                                                        <tr>
+                                                            <th>
+                                                                <i class="fa fa-briefcase"></i> Nombre
+                                                            </th>
+                                                            <th>
+                                                                <i class="fa fa-bookmark"></i> Tipo de Contacto 
+                                                            </th>
+                                                            <th class="hidden-xs">
+                                                                <i class="fa fa-question"></i> Descrition
+                                                            </th>
+                                                           
+                                                            <th>
+                                                            </th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- END SAMPLE TABLE PORTLET-->
+                                </div>
+
+
+
+
+
+
+
+                                <div class="tab-pane" id="tab3">
+                                    <h3 class="block">Provide your billing and credit card details</h3>
+                                    <div class="form-group">
+                                        <label class="control-label col-md-3">
+                                            Card Holder Name <span class="required">
+                                                *
+                                            </span>
+                                        </label>
+                                        <div class="col-md-4">
+                                            <input type="text" class="form-control" name="card_name" />
+                                            <span class="help-block">
+                                            </span>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="control-label col-md-3">
+                                            Card Number <span class="required">
+                                                *
+                                            </span>
+                                        </label>
+                                        <div class="col-md-4">
+                                            <input type="text" class="form-control" name="card_number" />
+                                            <span class="help-block">
+                                            </span>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="control-label col-md-3">
+                                            CVC <span class="required">
+                                                *
+                                            </span>
+                                        </label>
+                                        <div class="col-md-4">
+                                            <input type="text" placeholder="" class="form-control" name="card_cvc" />
+                                            <span class="help-block">
+                                            </span>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="control-label col-md-3">
+                                            Expiration(MM/YYYY) <span class="required">
+                                                *
+                                            </span>
+                                        </label>
+                                        <div class="col-md-4">
+                                            <input type="text" placeholder="MM/YYYY" maxlength="7" class="form-control" name="card_expiry_date" />
+                                            <span class="help-block">
+                                                e.g 11/2020
+                                            </span>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="control-label col-md-3">
+                                            Payment Options <span class="required">
+                                                *
+                                            </span>
+                                        </label>
+                                        <div class="col-md-4">
+                                            <div class="checkbox-list">
+                                                <label>
+                                                    <input type="checkbox" name="payment[]" value="1" data-title="Auto-Pay with this Credit Card." /> Auto-Pay with this Credit Card
+                                                </label>
+                                                <label>
+                                                    <input type="checkbox" name="payment[]" value="2" data-title="Email me monthly billing." /> Email me monthly billing
+                                                </label>
+                                            </div>
+                                            <div id="form_payment_error">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="tab-pane" id="tab4">
+                                    <h3 class="block">Confirm your account</h3>
+                                    <h4 class="form-section">Account</h4>
+                                    <div class="form-group">
+                                        <label class="control-label col-md-3">Username:</label>
+                                        <div class="col-md-4">
+                                            <p class="form-control-static" data-display="username">
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="control-label col-md-3">Email:</label>
+                                        <div class="col-md-4">
+                                            <p class="form-control-static" data-display="email">
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <h4 class="form-section">Profile</h4>
+                                    <div class="form-group">
+                                        <label class="control-label col-md-3">Fullname:</label>
+                                        <div class="col-md-4">
+                                            <p class="form-control-static" data-display="fullname">
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="control-label col-md-3">Gender:</label>
+                                        <div class="col-md-4">
+                                            <p class="form-control-static" data-display="gender">
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="control-label col-md-3">Phone:</label>
+                                        <div class="col-md-4">
+                                            <p class="form-control-static" data-display="phone">
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="control-label col-md-3">Address:</label>
+                                        <div class="col-md-4">
+                                            <p class="form-control-static" data-display="address">
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="control-label col-md-3">City/Town:</label>
+                                        <div class="col-md-4">
+                                            <p class="form-control-static" data-display="city">
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="control-label col-md-3">Country:</label>
+                                        <div class="col-md-4">
+                                            <p class="form-control-static" data-display="country">
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="control-label col-md-3">Remarks:</label>
+                                        <div class="col-md-4">
+                                            <p class="form-control-static" data-display="remarks">
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <h4 class="form-section">Billing</h4>
+                                    <div class="form-group">
+                                        <label class="control-label col-md-3">Card Holder Name:</label>
+                                        <div class="col-md-4">
+                                            <p class="form-control-static" data-display="card_name">
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="control-label col-md-3">Card Number:</label>
+                                        <div class="col-md-4">
+                                            <p class="form-control-static" data-display="card_number">
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="control-label col-md-3">CVC:</label>
+                                        <div class="col-md-4">
+                                            <p class="form-control-static" data-display="card_cvc">
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="control-label col-md-3">Expiration:</label>
+                                        <div class="col-md-4">
+                                            <p class="form-control-static" data-display="card_expiry_date">
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="control-label col-md-3">Payment Options:</label>
+                                        <div class="col-md-4">
+                                            <p class="form-control-static" data-display="payment">
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-actions">
+                            <div class="row">
+                                <div class="col-md-offset-3 col-md-9">
+                                    <a href="javascript:;" class="btn default button-previous">
+                                        <i class="m-icon-swapleft"></i> Back
+                                    </a>
+                                    <a href="javascript:;" class="btn blue button-next">
+                                        Continue <i class="m-icon-swapright m-icon-white"></i>
+                                    </a>
+                                    <a href="javascript:;" class="btn green button-submit">
+                                        Submit <i class="m-icon-swapright m-icon-white"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+</div>
+<!-- END PAGE CONTENT-->
+
+
+@section Scripts{
+    <script>
+
+        function AddContacts() {
+            //limpiar span
+            var spans = $('#errorAddContact');
+            spans.text(''); // clear the text
+
+            var nombre = document.getElementById('txtContactName').value;
+
+            var desc = document.getElementById('txtContactDesc').value;
+
+            var type = document.getElementById('ddContactType').value;
+
+            //validando
+            if (nombre==="" || nombre==null) {
+                spans.text('Debe ingresar un nombre.');
+            } else if (desc === "" || desc==null) {
+                spans.text('Debe ingresar una descripción.');
+            } else if (type === "" || type == null || type == "0" ||  type== 0 )
+            {
+                spans.text('Debe seleccionar un tipo de contacto.');
+            }
+            else {
+                var table = document.getElementById("tableContact");
+                var countFila = table.rows.length - 1;
+
+            }
+           
+
+
+            debugger;
+        };
+
+    </script>
+}

@@ -1,0 +1,96 @@
+﻿@model DealerBasicInfoViewModel
+
+@using (Html.BeginForm("Update", "Dealer", FormMethod.Post, new { id = "formedit" }))
+{
+    @Html.HiddenFor(x => x.id)
+    <div class="form-body">
+
+        <div class="form-group">
+            <label class="col-md-2 control-label">
+                Codigo del Dealer: <span class="required">
+                    *
+                </span>
+            </label>
+            <div class="col-md-10">
+                @Html.TextBoxFor(x => x.DealerCode, new { type = "text", @class = "form-control" })
+                <span data-key="DealerCode" class="form-validation-failed" style="color:red"></span>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="col-md-2 control-label">
+                Nombre del Dealer: <span class="required">
+                    *
+                </span>
+            </label>
+            <div class="col-md-10">
+                @Html.TextBoxFor(x => x.DealerName, new { type = "text", @class = "form-control" })
+                <span data-key="DealerName" class="form-validation-failed" style="color:red"></span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-md-2 control-label">
+                Provincia: <span class="required">
+                    *
+                </span>
+            </label>
+            <div class="col-md-10">
+
+                <select class="table-group-action-input form-control input-medium" name="ProvinceId">
+                    <option value="">Select...</option>
+                    <option value="1">Santo Domingo</option>
+                    <option value="0">Santiago</option>
+                    <option value="0">La Vega</option>
+                    <option value="0">San pedro de macorís</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="col-md-2 control-label">
+                Presidente del Dealer: <span class="required">
+                    *
+                </span>
+            </label>
+            <div class="col-md-10">
+                @Html.TextBoxFor(x => x.DealerPresident, new { type = "text", @class = "form-control" })
+                <span data-key="DealerPresident" class="form-validation-failed" style="color:red"></span>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="col-md-2 control-label">
+                Dirección: <span class="required">
+                    *
+                </span>
+            </label>
+            <div class="col-md-10">
+                @Html.TextAreaFor(x => x.Address, new { @class = "form-control" })
+                <span data-key="Address" class="form-validation-failed" style="color:red"></span>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="col-md-2 control-label">
+                Estado: <span class="required">
+                    *
+                </span>
+            </label>
+            <div class="col-md-10">
+                <div class="margin-bottom-10">
+                    <label for="option1">Activo</label>
+                    <input id="option1" @(Model.Status == true ? "checked" : "") type="radio" name="Status" value="true" class="make-switch switch-radio1">
+
+                </div>
+                <div class="margin-bottom-10">
+                    <label for="option2">Inactivo</label>
+                    <input id="option2" @(Model.Status == false ? "checked" : "") type="radio" name="Status" value="false" class="make-switch switch-radio1">
+                </div>
+            </div>
+        </div>
+    </div>
+    <bt />
+    <button data-ajax="true"  type="submit" class="btn blue">Save changes</button>
+
+}
+

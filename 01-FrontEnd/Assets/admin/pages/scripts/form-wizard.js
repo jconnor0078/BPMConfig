@@ -33,20 +33,39 @@ var FormWizard = function () {
                 errorClass: 'help-block help-block-error', // default input error message class
                 focusInvalid: false, // do not focus the last invalid input
                 rules: {
-                    //account
-                    username: {
-                        minlength: 5,
+                    //Info General
+                    DealerCode: {
+                        minlength: 1,
                         required: true
                     },
-                    password: {
-                        minlength: 5,
+                    DealerName: {
+                        minlength: 1,
                         required: true
                     },
-                    rpassword: {
-                        minlength: 5,
-                        required: true,
-                        equalTo: "#submit_form_password"
+                    ProvinceId: {
+                        minlength: 1,
+                        required: true
                     },
+                    DealerPresident: {
+                        minlength: 1,
+                        required: true
+                    },
+                    Address: {
+                        minlength: 1,
+                        required: true
+                    },
+                    Status: {
+                        required: true
+                    },
+                    //password: {
+                    //    minlength: 5,
+                    //    required: true
+                    //},
+                    //rpassword: {
+                    //    minlength: 5,
+                    //    required: true,
+                    //    equalTo: "#submit_form_password"
+                    //},
                     //profile
                     fullname: {
                         required: true
@@ -96,16 +115,16 @@ var FormWizard = function () {
 
                 messages: { // custom messages for radio buttons and checkboxes
                     'payment[]': {
-                        required: "Please select at least one option",
-                        minlength: jQuery.validator.format("Please select at least one option")
+                        required: "Seleccione al menos una opción",
+                        minlength: jQuery.validator.format("Seleccione al menos una opción")
                     }
                 },
 
                 errorPlacement: function (error, element) { // render error placement for each input type
-                    if (element.attr("name") == "gender") { // for uniform radio buttons, insert the after the given container
-                        error.insertAfter("#form_gender_error");
+                    if (element.attr("name") == "Status") { // for uniform radio buttons, insert the after the given container
+                        error.insertAfter("#form_Status_error");
                     } else if (element.attr("name") == "payment[]") { // for uniform checkboxes, insert the after the given container
-                        error.insertAfter("#form_payment_error");
+                        error.insertAfter("#form_Status_error");
                     } else {
                         error.insertAfter(element); // for other inputs, just perform default behavior
                     }

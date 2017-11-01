@@ -96,6 +96,7 @@
   <ItemGroup>
     <Compile Include="Config\ServiceRegister.cs" />
     <Compile Include="DealerContactTypeService.cs" />
+    <Compile Include="DealerService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
