@@ -16,7 +16,17 @@
                 <span data-key="DealerCode" class="form-validation-failed" style="color:red"></span>
             </div>
         </div>
-
+        <div class="form-group">
+            <label class="col-md-2 control-label">
+                RNC: <span class="required">
+                    *
+                </span>
+            </label>
+            <div class="col-md-10">
+                @Html.TextBoxFor(x => x.RNC, new { type = "text", @class = "form-control" })
+                <span data-key="RNC" class="form-validation-failed" style="color:red"></span>
+            </div>
+        </div>
         <div class="form-group">
             <label class="col-md-2 control-label">
                 Nombre del Dealer: <span class="required">
@@ -43,6 +53,7 @@
                     <option value="0">La Vega</option>
                     <option value="0">San pedro de macorís</option>
                 </select>
+                <span data-key="ProvinceId" class="form-validation-failed" style="color:red"></span>
             </div>
         </div>
 
@@ -90,7 +101,7 @@
         </div>
     </div>
     <bt />
-    <button data-ajax="true"  type="submit" class="btn blue">Save changes</button>
+    <button data-ajax="true"  type="submit" class="btn blue">Guardar Cambios</button>
 
 }
 

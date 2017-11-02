@@ -15,6 +15,8 @@ namespace Model.Domain
         [Required]
         public string DealerCode { get; set; }
         [Required]
+        public string RNC { get; set; }
+        [Required]
         public string DealerName { get; set; }
         [Required]
         public int ProvinceId { get; set; }

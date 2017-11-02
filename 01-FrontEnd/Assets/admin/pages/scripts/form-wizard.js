@@ -38,6 +38,10 @@ var FormWizard = function () {
                         minlength: 1,
                         required: true
                     },
+                    RNC: {
+                        minlength: 1,
+                        required: true
+                    },
                     DealerName: {
                         minlength: 1,
                         required: true
@@ -192,7 +196,7 @@ var FormWizard = function () {
                 var total = navigation.find('li').length;
                 var current = index + 1;
                 // set wizard title
-                $('.step-title', $('#form_wizard_1')).text('Step ' + (index + 1) + ' of ' + total);
+                $('.step-title', $('#form_wizard_1')).text('Paso ' + (index + 1) + ' de ' + total);
                 // set done steps
                 jQuery('li', $('#form_wizard_1')).removeClass("done");
                 var li_list = navigation.find('li');
@@ -260,7 +264,7 @@ var FormWizard = function () {
 
             $('#form_wizard_1').find('.button-previous').hide();
             $('#form_wizard_1 .button-submit').click(function () {
-                alert('Finished! Hope you like it :)');
+                alert('Finalizado! Gracias...');
             }).hide();
 
             //apply validation on select2 dropdown value change, this only needed for chosen dropdown integration.

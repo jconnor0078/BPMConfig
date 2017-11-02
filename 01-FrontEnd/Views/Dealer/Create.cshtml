@@ -51,7 +51,7 @@
                                             2
                                         </span>
                                         <span class="desc">
-                                            <i class="fa fa-check"></i> Profile Setup
+                                            <i class="fa fa-check"></i> Contactos del Dealer
                                         </span>
                                     </a>
                                 </li>
@@ -61,7 +61,7 @@
                                             3
                                         </span>
                                         <span class="desc">
-                                            <i class="fa fa-check"></i> Billing Setup
+                                            <i class="fa fa-check"></i> Ascociaciones del Dealer
                                         </span>
                                     </a>
                                 </li>
@@ -71,7 +71,7 @@
                                             4
                                         </span>
                                         <span class="desc">
-                                            <i class="fa fa-check"></i> Confirm
+                                            <i class="fa fa-check"></i> Confirmar Información
                                         </span>
                                     </a>
                                 </li>
@@ -108,6 +108,19 @@
                                     </div>
                                     <div class="form-group">
                                         <label class="control-label col-md-3">
+                                            RNC <span class="required">
+                                                *
+                                            </span>
+                                        </label>
+                                        <div class="col-md-4">
+                                            <input type="text" class="form-control" name="RNC" />
+                                            <span class="help-block">
+                                                colocar el RNC del dealer
+                                            </span>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="control-label col-md-3">
                                             Nombre de Dealer <span class="required">
                                                 *
                                             </span>
@@ -119,9 +132,12 @@
                                             </span>
                                         </div>
                                     </div>
-
                                     <div class="form-group">
-                                        <label class="control-label col-md-3">Provincia</label>
+                                        <label class="control-label col-md-3">
+                                            Provincia <span class="required">
+                                                *
+                                            </span>
+                                        </label>
                                         <div class="col-md-4">
                                             <select name="ProvinceId" id="ProvinceId_list" class="form-control">
                                                 <option value=""></option>
@@ -148,7 +164,11 @@
                                         </div>
                                     </div>
                                     <div class="form-group">
-                                        <label class="control-label col-md-3">Dirección</label>
+                                        <label class="control-label col-md-3">
+                                            Dirección <span class="required">
+                                                *
+                                            </span>
+                                        </label>
                                         <div class="col-md-4">
                                             <textarea class="form-control" rows="3" name="Address"></textarea>
                                             <span class="help-block">
@@ -195,7 +215,7 @@
                                         <label class="control-label col-md-3">Tipo de contacto</label>
                                         <div class="col-md-4">
                                             <select id="ddContactType" class="form-control">
-                                                <option value=""></option>
+                                                <option value="0"></option>
                                                 <option value="1">Santo Domingo</option>
                                                 <option value="2">Santiago</option>
                                                 <option value="3">La Romana</option>
@@ -213,13 +233,15 @@
                                             <input type="text" class="form-control" id="txtContactDesc" />
                                         </div>
                                     </div>
-                                  
-                                    <div class="form-group">
+                                    <div class="form-group last">
                                         <label class="control-label col-md-3"></label>
                                         <div class="col-md-4">
-                                            <button type="button" onclick="AddContacts()" class="btn blue">Agregar</button>
+                                            <button type="button"  onclick="AddContacts()"  class="btn green">
+                                                Agregar <i class="fa fa-share"></i>
+                                            </button>
                                         </div>
                                     </div>
+                   
 
                                     <div class="portlet">
                                         <div class="portlet-title">
@@ -240,19 +262,17 @@
                                                                 <i class="fa fa-briefcase"></i> Nombre
                                                             </th>
                                                             <th>
-                                                                <i class="fa fa-bookmark"></i> Tipo de Contacto 
+                                                                <i class="fa fa-bookmark"></i> Tipo de Contacto
                                                             </th>
                                                             <th class="hidden-xs">
                                                                 <i class="fa fa-question"></i> Descrition
                                                             </th>
-                                                           
+
                                                             <th>
                                                             </th>
                                                         </tr>
                                                     </thead>
-                                                    <tbody>
-
-                                                    </tbody>
+                                                    <tbody id="bodyTable_tabeContact"></tbody>
                                                 </table>
                                             </div>
                                         </div>
@@ -260,150 +280,131 @@
                                     <!-- END SAMPLE TABLE PORTLET-->
                                 </div>
 
-
-
-
-
-
-
                                 <div class="tab-pane" id="tab3">
-                                    <h3 class="block">Provide your billing and credit card details</h3>
+                                    <h3 class="block">Asociacines del Dealer</h3>
+                                    <span id="errorAddContact" style="color:red"></span>
+
                                     <div class="form-group">
-                                        <label class="control-label col-md-3">
-                                            Card Holder Name <span class="required">
-                                                *
-                                            </span>
-                                        </label>
-                                        <div class="col-md-4">
-                                            <input type="text" class="form-control" name="card_name" />
-                                            <span class="help-block">
-                                            </span>
+                                        <label class="control-label col-md-3">Asociación</label>
+                                        <div class="col-md-5">
+                                            <select class="form-control select2me" data-placeholder="Select...">
+                                                <option value="AL">Alabama</option>
+                                                <option value="WY">Wyoming</option>
+                                            </select>
                                         </div>
                                     </div>
-                                    <div class="form-group">
-                                        <label class="control-label col-md-3">
-                                            Card Number <span class="required">
-                                                *
-                                            </span>
-                                        </label>
+                                    <div class="form-group last">
+                                        <label class="control-label col-md-3"></label>
                                         <div class="col-md-4">
-                                            <input type="text" class="form-control" name="card_number" />
-                                            <span class="help-block">
-                                            </span>
+                                            <button type="button" class="btn green">
+                                                Agregar <i class="fa fa-share"></i>
+                                            </button>
                                         </div>
                                     </div>
-                                    <div class="form-group">
-                                        <label class="control-label col-md-3">
-                                            CVC <span class="required">
-                                                *
-                                            </span>
-                                        </label>
-                                        <div class="col-md-4">
-                                            <input type="text" placeholder="" class="form-control" name="card_cvc" />
-                                            <span class="help-block">
-                                            </span>
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <label class="control-label col-md-3">
-                                            Expiration(MM/YYYY) <span class="required">
-                                                *
-                                            </span>
-                                        </label>
-                                        <div class="col-md-4">
-                                            <input type="text" placeholder="MM/YYYY" maxlength="7" class="form-control" name="card_expiry_date" />
-                                            <span class="help-block">
-                                                e.g 11/2020
-                                            </span>
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <label class="control-label col-md-3">
-                                            Payment Options <span class="required">
-                                                *
-                                            </span>
-                                        </label>
-                                        <div class="col-md-4">
-                                            <div class="checkbox-list">
-                                                <label>
-                                                    <input type="checkbox" name="payment[]" value="1" data-title="Auto-Pay with this Credit Card." /> Auto-Pay with this Credit Card
-                                                </label>
-                                                <label>
-                                                    <input type="checkbox" name="payment[]" value="2" data-title="Email me monthly billing." /> Email me monthly billing
-                                                </label>
+
+                                    <div class="portlet">
+                                        <div class="portlet-title">
+                                            <div class="caption">
+                                                <i class="icon-user"></i>Contactos Agregados
                                             </div>
-                                            <div id="form_payment_error">
+                                            <div class="tools">
+                                                <a href="javascript:;" class="collapse">
+                                                </a>
+                                            </div>
+                                        </div>
+                                        <div class="portlet-body">
+                                            <div class="table-scrollable">
+                                                <table id="tableAssociation" class="table table-striped table-bordered table-advance table-hover">
+                                                    <thead>
+                                                        <tr>
+                                                            <th>
+                                                                <i class="fa fa-briefcase"></i> Nombre
+                                                            </th>
+                                                            <th>
+                                                                <i class="fa fa-bookmark"></i> Tipo de Contacto
+                                                            </th>
+                                                            <th class="hidden-xs">
+                                                                <i class="fa fa-question"></i> Descrition
+                                                            </th>
+
+                                                            <th>
+                                                            </th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody id="bodyTable_tabeAssociation"></tbody>
+                                                </table>
                                             </div>
                                         </div>
                                     </div>
+                                    <!-- END SAMPLE TABLE PORTLET-->
                                 </div>
+
                                 <div class="tab-pane" id="tab4">
-                                    <h3 class="block">Confirm your account</h3>
-                                    <h4 class="form-section">Account</h4>
+                                    <h3 class="block">Confirmación de los datos del nuevo dealer</h3>
+                                    <h4 class="form-section">Datos Generales</h4>
                                     <div class="form-group">
                                         <label class="control-label col-md-3">Username:</label>
                                         <div class="col-md-4">
-                                            <p class="form-control-static" data-display="username">
+                                            <p class="form-control-static" data-display="DealerCode">
                                             </p>
                                         </div>
                                     </div>
                                     <div class="form-group">
-                                        <label class="control-label col-md-3">Email:</label>
+                                        <label class="control-label col-md-3">RNC:</label>
                                         <div class="col-md-4">
-                                            <p class="form-control-static" data-display="email">
-                                            </p>
-                                        </div>
-                                    </div>
-                                    <h4 class="form-section">Profile</h4>
-                                    <div class="form-group">
-                                        <label class="control-label col-md-3">Fullname:</label>
-                                        <div class="col-md-4">
-                                            <p class="form-control-static" data-display="fullname">
+                                            <p class="form-control-static" data-display="RNC">
                                             </p>
                                         </div>
                                     </div>
                                     <div class="form-group">
-                                        <label class="control-label col-md-3">Gender:</label>
+                                        <label class="control-label col-md-3">Presidente del Dealer:</label>
                                         <div class="col-md-4">
-                                            <p class="form-control-static" data-display="gender">
+                                            <p class="form-control-static" data-display="DealerPresident">
                                             </p>
                                         </div>
                                     </div>
                                     <div class="form-group">
-                                        <label class="control-label col-md-3">Phone:</label>
+                                        <label class="control-label col-md-3">Dirección:</label>
                                         <div class="col-md-4">
-                                            <p class="form-control-static" data-display="phone">
+                                            <p class="form-control-static" data-display="Address">
                                             </p>
                                         </div>
                                     </div>
                                     <div class="form-group">
-                                        <label class="control-label col-md-3">Address:</label>
+                                        <label class="control-label col-md-3">Provincia:</label>
                                         <div class="col-md-4">
-                                            <p class="form-control-static" data-display="address">
+                                            <p class="form-control-static" data-display="ProvinceId">
                                             </p>
                                         </div>
                                     </div>
                                     <div class="form-group">
-                                        <label class="control-label col-md-3">City/Town:</label>
+                                        <label class="control-label col-md-3">Estado:</label>
                                         <div class="col-md-4">
-                                            <p class="form-control-static" data-display="city">
+                                            <p class="form-control-static" data-display="Status">
                                             </p>
                                         </div>
                                     </div>
-                                    <div class="form-group">
-                                        <label class="control-label col-md-3">Country:</label>
-                                        <div class="col-md-4">
-                                            <p class="form-control-static" data-display="country">
-                                            </p>
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <label class="control-label col-md-3">Remarks:</label>
-                                        <div class="col-md-4">
-                                            <p class="form-control-static" data-display="remarks">
-                                            </p>
-                                        </div>
-                                    </div>
+
+
+
+
+
+                                    <h4 class="form-section">Contactos del Dealer</h4>
+                                    <table id="tableContactInfo" class="table table-striped table-bordered table-advance table-hover">
+                                        <thead>
+                                            <tr>
+                                                <th>
+                                                    Nombre
+                                                </th>
+                                                <th>
+                                                    Tipo de Contacto
+                                                </th>
+                                                <th>
+                                                    Descripción
+                                                </th>
+                                            </tr>
+                                        </thead>
+                                    </table>
                                     <h4 class="form-section">Billing</h4>
                                     <div class="form-group">
                                         <label class="control-label col-md-3">Card Holder Name:</label>
@@ -447,13 +448,13 @@
                             <div class="row">
                                 <div class="col-md-offset-3 col-md-9">
                                     <a href="javascript:;" class="btn default button-previous">
-                                        <i class="m-icon-swapleft"></i> Back
+                                        <i class="m-icon-swapleft"></i> Atras
                                     </a>
-                                    <a href="javascript:;" class="btn blue button-next">
-                                        Continue <i class="m-icon-swapright m-icon-white"></i>
+                                    <a href="javascript:;" onclick="fillInfo()" class="btn blue button-next">
+                                        Continuar <i class="m-icon-swapright m-icon-white"></i>
                                     </a>
                                     <a href="javascript:;" class="btn green button-submit">
-                                        Submit <i class="m-icon-swapright m-icon-white"></i>
+                                        Enviar <i class="m-icon-swapright m-icon-white"></i>
                                     </a>
                                 </div>
                             </div>
@@ -466,11 +467,16 @@
 </div>
 <!-- END PAGE CONTENT-->
 
-
 @section Scripts{
     <script>
 
+        $(document).ready(function () {
+
+            $('#tableContactInfo').DataTable();
+        });
+
         function AddContacts() {
+
             //limpiar span
             var spans = $('#errorAddContact');
             spans.text(''); // clear the text
@@ -479,27 +485,167 @@
 
             var desc = document.getElementById('txtContactDesc').value;
 
-            var type = document.getElementById('ddContactType').value;
+            var type = document.getElementById('ddContactType').options[document.getElementById('ddContactType').selectedIndex].text;
 
             //validando
-            if (nombre==="" || nombre==null) {
+            if (nombre === "" || nombre == null) {
                 spans.text('Debe ingresar un nombre.');
-            } else if (desc === "" || desc==null) {
-                spans.text('Debe ingresar una descripción.');
-            } else if (type === "" || type == null || type == "0" ||  type== 0 )
-            {
+            } else if (type === "" || type == null || type == "0" || type == 0) {
                 spans.text('Debe seleccionar un tipo de contacto.');
+            } else if (desc === "" || desc == null) {
+                spans.text('Debe ingresar una descripción.');
             }
             else {
-                var table = document.getElementById("tableContact");
+                var table = document.getElementById("bodyTable_tabeContact");
+
                 var countFila = table.rows.length - 1;
+                var indexNewFila = countFila + 1;
+
+
+                var tr = document.createElement("tr");
+                tr.id = "tr" + indexNewFila;
+
+                var th1 = document.createElement("th");
+                th1.id = "thNombre" + indexNewFila;
+                var lbl1 = document.createElement("label");
+                lbl1.id = "labelNombre" + indexNewFila;
+                var h1 = document.createElement("input");
+                h1.type = "hidden";
+                h1.value = $("#txtContactName").val();
+                h1.name = "ContactList[" + indexNewFila + "].ContactName";
+                lbl1.textContent = nombre;
+                th1.appendChild(lbl1);
+                th1.appendChild(h1);
+
+                var th2 = document.createElement("th");
+                th2.id = "thTipo" + indexNewFila;
+                var lbl2 = document.createElement("label");
+                lbl2.id = "labelTipo" + indexNewFila;
+                var h2 = document.createElement("input");
+                h2.type = "hidden";
+                h2.name = "ContactList[" + indexNewFila + "].ContactTypeId";
+                h2.value = $("#ddContactType").val();
+                lbl2.textContent = type;
+                th2.appendChild(lbl2);
+                th2.appendChild(h2);
+
+                var th3 = document.createElement("th");
+                th3.id = "thDescription" + indexNewFila;
+                var lbl3 = document.createElement("label");
+                lbl3.id = "labelDescription" + indexNewFila;
+                lbl3.textContent = desc;
+                var h3 = document.createElement("input");
+                h3.type = "hidden";
+                h3.value = $("#txtContactDesc").val();
+                h3.name = "ContactList[" + indexNewFila + "].ContactDesc";
+                th3.appendChild(lbl3);
+                th3.appendChild(h3);
+
+                var th4 = document.createElement("th");
+                th4.id = "thButton" + indexNewFila;
+                var buton = document.createElement("div");
+                buton.innerHTML = '<button onclick="deleteElement(' + indexNewFila + ')" type="button" class="btn btn- danger">Eliminar</button>';
+
+
+                th4.appendChild(buton);
+
+                tr.appendChild(th1);
+                tr.appendChild(th2);
+                tr.appendChild(th3);
+                tr.appendChild(th4);
+
+                table.appendChild(tr);
+
+                clearAll();
 
             }
-           
 
 
-            debugger;
+
+
         };
+
+        function clearAll() {
+            $("#txtContactName").val("");
+            $("#txtContactDesc").val("");
+            $("#ddContactType").val(0);
+        }
+
+
+        function deleteElement(e) {
+            $('#tr' + e).remove();
+            reOrganizar();
+        }
+
+        function fillInfo() {
+            var dataSet = [];
+            tablaContact = document.getElementById("bodyTable_tabeContact");
+            var trs = tablaContact.getElementsByTagName('tr');
+            var co = trs.length;
+            if (co > 0) {
+                for (var i = 0; i < co; i++) {
+                    var labels = trs[i].getElementsByTagName('label');
+                    var tmpData = [];
+                    tmpData.push(labels[0].textContent);
+                    tmpData.push(labels[1].textContent);
+                    tmpData.push(labels[2].textContent);
+                    dataSet.push(tmpData);
+                }
+            }
+            $('#tableContactInfo').DataTable({
+                destroy: true,
+                data: dataSet,
+                paginate: false,
+                searching: false,
+                info: false,
+                colums: [
+                    { title: "Nombre" },
+                    { title: "Tipo de Contacto" },
+                    { title: "Descripción" }
+                ]
+
+            });
+        }
+
+        function reOrganizar() {
+
+            var tablebody = document.getElementById("bodyTable_tabeContact");
+            if (tablebody) {
+                var count = tablebody.getElementsByTagName('tr').length;
+                if (count != null && count > 0) {
+                    var trs = tablebody.getElementsByTagName('tr');
+                    for (var i = 0; i < count; i++) {
+
+                        trs[i].id = "tr" + i;
+
+
+                        var inputs = trs[i].getElementsByTagName('input');
+                        inputs[0].name = "ContactList[" + i + "].ContactName";
+                        inputs[1].name = "ContactList[" + i + "].ContactTypeId";
+                        inputs[2].name = "ContactList[" + i + "].ContactDesc";
+
+                        var ths = trs[i].getElementsByTagName('th');
+                        ths[0].id = "thNombre" + i;
+                        ths[1].id = "thTipo" + i;
+                        ths[2].id = "thDescription" + i;
+                        ths[3].id = "thButton" + i;
+
+                    }
+                    var trs2 = tablebody.getElementsByTagName('tr');
+                    for (var i = 0; i < count; i++) {
+                        var butons = trs2[i].getElementsByTagName('th');
+                        butons[3].remove();
+
+                        var th4 = document.createElement("th");
+                        th4.id = "thButton" + i;
+                        var buton = document.createElement("div");
+                        buton.innerHTML = '<button onclick="deleteElement(' + i + ')" type="button" class="btn btn- danger">Eliminar</button>';
+                        th4.appendChild(buton);
+                        trs2[i].appendChild(th4);
+                    }
+                }
+            }
+        }
 
     </script>
 }

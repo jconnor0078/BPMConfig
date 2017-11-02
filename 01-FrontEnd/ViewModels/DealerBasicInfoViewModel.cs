@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
@@ -15,9 +16,13 @@ namespace FrontEnd.ViewModels
         public string DealerCode { get; set; }
 
         [Required(ErrorMessage = "El campo {0} es requerido.")]
+        public string RNC { get; set; }
+
+        [Required(ErrorMessage = "El campo {0} es requerido.")]
         public string DealerName { get; set; }
 
         [Required(ErrorMessage = "El campo {0} es requerido.")]
+        [DisplayName ("Provincia")]
         public int ProvinceId { get; set; }
 
         [Required(ErrorMessage = "El campo {0} es requerido.")]

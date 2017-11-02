@@ -57,6 +57,7 @@ namespace Service
                         originalRegist.DealerPresident = model.DealerPresident;
                         originalRegist.Address = model.Address;
                         originalRegist.Status = model.Status;
+                        originalRegist.RNC = model.RNC;
                         originalRegist.CreatorUser = users.Where(w => w.Id == originalRegist.CreatorUserId).FirstOrDefault();
                         if (model.LastModifierUserId != null && model.LastModifierUserId != string.Empty)
                         {
@@ -107,6 +108,7 @@ namespace Service
                     ProvinceId = s.ProvinceId,
                     DealerPresident = s.DealerPresident,
                     Address = s.Address,
+                    RNC= s.RNC,
                     Status = s.Status,
                     CreatorUser = users.Where(w => w.Id == s.CreatorUserId).Select(t => new ApplicationUser { UserName = t.UserName }).FirstOrDefault(),
                     CreationTime = s.CreationTime,
@@ -213,6 +215,7 @@ namespace Service
                     ProvinceId = s.ProvinceId,
                     DealerPresident = s.DealerPresident,
                     Address = s.Address,
+                    RNC= s.RNC,
                     Status = s.Status,
                     CreatorUser = users.Where(w => w.Id == s.CreatorUserId).Select(t => new ApplicationUser { UserName = t.UserName }).FirstOrDefault(),
                     CreationTime = s.CreationTime,
