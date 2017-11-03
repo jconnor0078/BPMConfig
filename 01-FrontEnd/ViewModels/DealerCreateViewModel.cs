@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
+using System.Web.Mvc;
 
 namespace FrontEnd.ViewModels
 {
@@ -19,6 +20,10 @@ namespace FrontEnd.ViewModels
 
         [Required(ErrorMessage = "El campo {0} es requerido.")]
         public string DealerName { get; set; }
+
+
+        [Required(ErrorMessage = "El campo {0} es requerido.")]
+        public string RNC { get; set; }
 
         [Required(ErrorMessage = "El campo {0} es requerido.")]
         public int ProvinceId { get; set; }
@@ -46,7 +51,11 @@ namespace FrontEnd.ViewModels
         [Required(ErrorMessage = "El campo {0} es requerido.")]
         public string ContactDesc { get; set; }
 
-        List<DealerContactVM> ContactList { get; set; }
+        public List<DealerContactVM> ContactList { get; set; }
+
+        public IEnumerable<SelectListItem> ContactTypeList { get; set; }
+
+        public IEnumerable<SelectListItem> ProvinceList { get; set; }
         #endregion
 
         #region Aosciacion de dealers
@@ -56,7 +65,7 @@ namespace FrontEnd.ViewModels
         [Required(ErrorMessage = "El campo {0} es requerido.")]
         public string DealerAssociationDesc { get; set; }
 
-        List<DealerAssociationVM> DealerAssociationList { get; set; }
+        public List<DealerAssociationVM> DealerAssociationList { get; set; }
         #endregion
 
 

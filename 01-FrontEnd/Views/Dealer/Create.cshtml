@@ -29,7 +29,7 @@
                 </div>
             </div>
             <div class="portlet-body form">
-                @using (Html.BeginForm("Update", "Dealer", FormMethod.Post, new { id = "submit_form", @class = "form-horizontal" }))
+                @using (Html.BeginForm("Create", "Dealer", FormMethod.Post, new { id = "submit_form", @class = "form-horizontal" }))
                 {
 
                     <div class="form-wizard">
@@ -287,16 +287,19 @@
                                     <div class="form-group">
                                         <label class="control-label col-md-3">Asociación</label>
                                         <div class="col-md-5">
-                                            <select class="form-control select2me" data-placeholder="Select...">
-                                                <option value="AL">Alabama</option>
-                                                <option value="WY">Wyoming</option>
+                                            <select id="ddAssociation" class="form-control select2me" data-placeholder="Select...">
+                                                <option value="1">Alabama</option>
+                                                <option value="2">Wyoming</option>
+                                                <option value="3">es</option>
+                                                <option value="4">dd</option>
+
                                             </select>
                                         </div>
                                     </div>
                                     <div class="form-group last">
                                         <label class="control-label col-md-3"></label>
                                         <div class="col-md-4">
-                                            <button type="button" class="btn green">
+                                            <button type="button" onclick="AddAssociation()" class="btn green">
                                                 Agregar <i class="fa fa-share"></i>
                                             </button>
                                         </div>
@@ -318,13 +321,10 @@
                                                     <thead>
                                                         <tr>
                                                             <th>
-                                                                <i class="fa fa-briefcase"></i> Nombre
+                                                                <i class="fa fa-briefcase"></i> Id
                                                             </th>
                                                             <th>
-                                                                <i class="fa fa-bookmark"></i> Tipo de Contacto
-                                                            </th>
-                                                            <th class="hidden-xs">
-                                                                <i class="fa fa-question"></i> Descrition
+                                                                <i class="fa fa-bookmark"></i> Asociación
                                                             </th>
 
                                                             <th>
@@ -405,42 +405,22 @@
                                             </tr>
                                         </thead>
                                     </table>
-                                    <h4 class="form-section">Billing</h4>
-                                    <div class="form-group">
-                                        <label class="control-label col-md-3">Card Holder Name:</label>
-                                        <div class="col-md-4">
-                                            <p class="form-control-static" data-display="card_name">
-                                            </p>
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <label class="control-label col-md-3">Card Number:</label>
-                                        <div class="col-md-4">
-                                            <p class="form-control-static" data-display="card_number">
-                                            </p>
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <label class="control-label col-md-3">CVC:</label>
-                                        <div class="col-md-4">
-                                            <p class="form-control-static" data-display="card_cvc">
-                                            </p>
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <label class="control-label col-md-3">Expiration:</label>
-                                        <div class="col-md-4">
-                                            <p class="form-control-static" data-display="card_expiry_date">
-                                            </p>
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <label class="control-label col-md-3">Payment Options:</label>
-                                        <div class="col-md-4">
-                                            <p class="form-control-static" data-display="payment">
-                                            </p>
-                                        </div>
-                                    </div>
+
+
+                                    <h4 class="form-section">Asociaciones del Dealer</h4>
+                                    <table id="tableAssociationInfo" class="table table-striped table-bordered table-advance table-hover">
+                                        <thead>
+                                            <tr>
+                                                <th>
+                                                    Id
+                                                </th>
+                                                <th>
+                                                    Asociación
+                                                </th>
+                                            </tr>
+                                        </thead>
+                                    </table>
+                                     
                                 </div>
                             </div>
                         </div>
@@ -453,9 +433,9 @@
                                     <a href="javascript:;" onclick="fillInfo()" class="btn blue button-next">
                                         Continuar <i class="m-icon-swapright m-icon-white"></i>
                                     </a>
-                                    <a href="javascript:;" class="btn green button-submit">
+                                    <button data-ajax="true" type="submit" class="btn green button-submit">
                                         Enviar <i class="m-icon-swapright m-icon-white"></i>
-                                    </a>
+                                    </button>
                                 </div>
                             </div>
                         </div>
@@ -473,6 +453,8 @@
         $(document).ready(function () {
 
             $('#tableContactInfo').DataTable();
+
+            $('#tableAssociationInfo').DataTable();
         });
 
         function AddContacts() {
@@ -605,6 +587,34 @@
                 ]
 
             });
+
+
+
+            var dataSet2 = [];
+            tablaContact2 = document.getElementById("bodyTable_tabeAssociation");
+            var trs2 = tablaContact2.getElementsByTagName('tr');
+            var co2 = trs2.length;
+            if (co2 > 0) {
+                for (var i = 0; i < co2; i++) {
+                    var labels2 = trs2[i].getElementsByTagName('label');
+                    var tmpData2 = [];
+                    tmpData2.push(labels2[0].textContent);
+                    tmpData2.push(labels2[1].textContent);
+                    dataSet2.push(tmpData2);
+                }
+            }
+            $('#tableAssociationInfo').DataTable({
+                destroy: true,
+                data: dataSet2,
+                paginate: false,
+                searching: false,
+                info: false,
+                colums: [
+                    { title: "Id" },
+                    { title: "Asociación" }
+                ]
+
+            });
         }
 
         function reOrganizar() {
@@ -645,6 +655,139 @@
                     }
                 }
             }
+        }
+
+        function AddAssociation()
+        {
+            var id = document.getElementById('ddAssociation').value;
+
+            var desc = document.getElementById('ddAssociation').options[document.getElementById('ddAssociation').selectedIndex].text;
+
+            if (id != null && id != "" && id > 0 && desc != null && desc != "") {
+
+                var exist = validateId(id);
+
+                if (!exist) {
+                    var table = document.getElementById("bodyTable_tabeAssociation");
+
+                    var countFila = table.rows.length - 1;
+                    var indexNewFila = countFila + 1;
+
+                    var tr = document.createElement("tr");
+                    tr.id = "trAssc" + indexNewFila;
+
+                    var th1 = document.createElement("th");
+                    th1.id = "thAsscId" + indexNewFila;
+                    var lbl1 = document.createElement("label");
+                    lbl1.id = "labelAsscId" + indexNewFila;
+                    var h1 = document.createElement("input");
+                    h1.type = "hidden";
+                    h1.value = id;
+                    h1.name = "DealerAssociationList[" + indexNewFila + "].DealerAssociationId";
+                    lbl1.textContent = id;
+                    th1.appendChild(lbl1);
+                    th1.appendChild(h1);
+
+                    var th2 = document.createElement("th");
+                    th2.id = "thAsscDesc" + indexNewFila;
+                    var lbl2 = document.createElement("label");
+                    lbl2.id = "labelAsscDesc" + indexNewFila;
+                    var h2 = document.createElement("input");
+                    h2.type = "hidden";
+                    h2.name = "DealerAssociationList[" + indexNewFila + "].DealerAssociationDesc";
+                    h2.value = $("#ddContactType").val();
+                    lbl2.textContent = desc;
+                    th2.appendChild(lbl2);
+                    th2.appendChild(h2);
+
+
+                    var th4 = document.createElement("th");
+                    th4.id = "thAsscButton" + indexNewFila;
+                    var buton = document.createElement("div");
+                    buton.innerHTML = '<button onclick="deleteElementAssc(' + indexNewFila + ')" type="button" class="btn btn- danger">Eliminar</button>';
+
+
+                    th4.appendChild(buton);
+
+                    tr.appendChild(th1);
+                    tr.appendChild(th2);
+                    tr.appendChild(th4);
+
+                    table.appendChild(tr);
+                }
+            }
+        }
+
+        function deleteElementAssc(e)
+        {
+            $('#trAssc' + e).remove();
+            reOrganizarAssc();
+        }
+        function reOrganizarAssc()
+        {
+            var tablebody = document.getElementById("bodyTable_tabeAssociation");
+            if (tablebody) {
+                var count = tablebody.getElementsByTagName('tr').length;
+                if (count != null && count > 0) {
+                    var trs = tablebody.getElementsByTagName('tr');
+                    for (var i = 0; i < count; i++) {
+
+                        trs[i].id = "trAssc" + i;
+
+
+                        var inputs = trs[i].getElementsByTagName('input');
+                        inputs[0].name = "DealerAssociationList[" + i + "].DealerAssociationId";
+                        inputs[1].name = "DealerAssociationList[" + i + "].DealerAssociationDesc";
+ 
+
+                        var ths = trs[i].getElementsByTagName('th');
+                        ths[0].id = "thAsscId" + i;
+                        ths[1].id = "thAsscDesc" + i;
+                        ths[2].id = "thAsscButton" + i;
+
+                    }
+                    var trs2 = tablebody.getElementsByTagName('tr');
+                    for (var i = 0; i < count; i++) {
+                        var butons = trs2[i].getElementsByTagName('th');
+                        butons[2].remove();
+
+                        var th4 = document.createElement("th");
+                        th4.id = "thAsscButton" + i;
+                        var buton = document.createElement("div");
+                        buton.innerHTML = '<button onclick="deleteElementAssc(' + i + ')" type="button" class="btn btn- danger">Eliminar</button>';
+                        th4.appendChild(buton);
+                        trs2[i].appendChild(th4);
+                    }
+                }
+            }
+        }
+
+        function validateId(e)
+        {
+            var tablebody = document.getElementById("bodyTable_tabeAssociation");
+            var exist = false;
+            if (tablebody) {
+                var trs = tablebody.getElementsByTagName('tr');
+                trCount = trs.length;
+                if (trCount>0) {
+                    for (var i = 0; i < trCount; i++) {
+                        var ths = trs[i].getElementsByTagName("th");
+                        var thcount = ths.length;
+                        if (thcount > 0) {
+                            if (ths[0].getElementsByTagName("label")) {
+                                var thToFilt = ths[0].getElementsByTagName("label");
+                                if (thToFilt[0].textContent==e) {
+                                    exist = true;
+                                    break;
+                                }
+                            }
+                        }
+                    }
+                }
+              
+                
+            }
+            return exist;
         }
 
     </script>

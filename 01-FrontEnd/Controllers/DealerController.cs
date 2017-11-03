@@ -146,7 +146,7 @@ namespace FrontEnd.Controllers
         }
 
         [HttpPost]
-        public JsonResult Upsdate(DealerBasicInfoViewModel model)
+        public JsonResult Create(DealerCreateViewModel model)
         {
             var rh = new ResponseHelper();
             if (ModelState.IsValid)
